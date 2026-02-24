@@ -1,8 +1,11 @@
+html {
+    font-family: monospace;
+}
+
 #notificaciones {
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 1000;
 }
 
 .notificacion {
@@ -12,10 +15,9 @@
     color: white;
     font-weight: bold;
     min-width: 200px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     opacity: 0;
     transform: translateX(100%);
-    transition: all 0.5s ease;
+    transition: 0.5s;
 }
 
 .notificacion.show {
@@ -23,10 +25,5 @@
     transform: translateX(0);
 }
 
-.notificacion.exito {
-    background-color: #4caf50; /* verde */
-}
-
-.notificacion.error {
-    background-color: #f44336; /* rojo */
-}
+.exito {background: skyblue;}
+.error {background: red;}

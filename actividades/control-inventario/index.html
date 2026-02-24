@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,29 +11,30 @@
     
     <form id="formProducto">
         <label for="inputCodigo">
-            Código:<input id="inputCodigo" type="number" required>
+            Código:<input id="inputCodigo" type="number">
         </label>
         
         <label for="inputNombre">
-            Nombre:<input id="inputNombre" type="text" required>
+            Nombre:<input id="inputNombre" type="text">
         </label>
 
         <label for="inputCantidad">
-            Cantidad:<input id="inputCantidad" type="number" required>
+            Cantidad:<input id="inputCantidad" type="number">
         </label>
 
         <label for="inputCosto">
-            Costo:<input id="inputCosto" type="number" required>
+            Costo:<input id="inputCosto" type="number">
         </label>
         
         <label for="inputCategoria">
-            Categoría:<input id="inputCategoria" type="text" required>
+            Categoría:<input id="inputCategoria" type="text">
         </label>
         
-        <button id="addProduct" type="submit">Agregar</button>
-        <button type="reset">Reset</button>
+        <button type="button" id="buttonAdd">Agregar</button>
     </form>
+    
     <div id="notificaciones"></div>
-    <script src="index.js"></script>
+    
+    <script src="app.js"></script>
 </body>
 </html>
