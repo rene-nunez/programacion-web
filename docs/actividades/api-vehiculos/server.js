@@ -19,7 +19,12 @@ class Almacen {
     }
 
     agregar(vehiculo) {
-        this.vehiculos.push(vehiculo);
+        if(!this.buscar(vehiculo.placa)) {
+            this.vehiculos.push(vehiculo);
+            return true;
+        } else {
+            return false;
+        }
     };
 
     listar() {
@@ -50,6 +55,45 @@ class Almacen {
         return null;
     }
 }
+
+const almacen = new Almacen();
+
+// ENDPOINTS
+
+// Agregar
+app.post("/vehiculos/", (req, res) => {
+    let status = almacen.agregar(new Vehiculo(req.body.placa, req.body.marca, req.body.modelo);
+    
+    if(status) {
+        res.status(201).json({"res": "vehículo agregado exitosamente"});
+    } else {
+        res.status(400).json({"res": "placa ya registrada"});
+    }
+})
+
+// Listar
+app.get("/vehiculos", (req, res) => {
+    res.json(almacen.listar());
+});
+
+// Buscar
+app.get("/vehiculos/:placa", (req, res) => {
+    let busqueda = almacen.buscar(req.params.placa)
+    if(busqueda) {
+        res.json(busqueda)
+    } else {
+        res.status(404).json({"res": "vehículo no encontrado"})
+    }
+})
+
+// Eliminar
+app.delete("/vehiculos/:placa", (req, res) => {
+    if(almacen.eliminar(req.params.placa)) {
+        res.json({"res": "vehículo eliminado"});
+    } else {
+        res.status(404).json({"res": "vehículo no encontrado"})
+    }
+})
 
 app.listen(PORT, () => {
     console.log(`Servidor escuchando en el puerto ${PORT}`);
