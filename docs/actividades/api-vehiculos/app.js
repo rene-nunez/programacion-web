@@ -11,13 +11,30 @@ btnAgregar.addEventListener("click", () => {
 
     if(placa && marca && modelo) {
         fetch("http://localhost:3000/vehiculos", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ placa, marca, modelo })
-            })
-            .then(res => res.json())
-            .then(data => console.log(data.res))
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ placa, marca, modelo })
+        })
+        .then(res => res.json())
+        .then(data => console.log(data.res))
     } else {
         console.warn("Completar todos los campos.");
     }
 });
+
+btnListar.addEventListener("click", () => {
+    fetch("http://localhost:3000/vehiculos")
+        .then(res => res.json())
+        .then(vehiculos => {
+            lista.innerHTML = "<ul>";
+
+            if(!vehiculos.length) {
+                lista.innerHTML = "<p>No hay vehículos en el almácen</p>"
+                return;
+            }
+
+            vehiculos.forEach(vehiculo => {
+                lista.innerHTML += `<ul>Placa: ${vehiculo.placa}, Marca: ${vehiculo.marca}, Modelo: ${vehiculo.modelo} <button type="button" onclick="eliminar(${vehiculo.placa})">Eliminar</button></ul>`
+            });
+        })
+})
