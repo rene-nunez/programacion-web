@@ -1,7 +1,9 @@
 import express from "express";
+import cors from "cors";
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 const PORT = 3000;
 
@@ -62,7 +64,7 @@ const almacen = new Almacen();
 
 // Agregar
 app.post("/vehiculos/", (req, res) => {
-    let status = almacen.agregar(new Vehiculo(req.body.placa, req.body.marca, req.body.modelo);
+    let status = almacen.agregar(new Vehiculo(req.body.placa, req.body.marca, req.body.modelo));
     
     if(status) {
         res.status(201).json({"res": "vehículo agregado exitosamente"});

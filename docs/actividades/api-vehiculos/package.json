@@ -5,11 +5,12 @@
   "license": "unlicense",
   "author": "anon",
   "type": "module",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "dev": "nodemon app.js"
+    "dev": "nodemon server.js"
   },
   "dependencies": {
+    "cors": "^2.8.6",
     "express": "^5.2.1"
   },
   "devDependencies": {
