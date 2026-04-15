@@ -49,5 +49,15 @@ btnBuscar.addEventListener("click", () => {
 
     fetch(`http://localhost:3000/vehiculos/${placa}`)
         .then(res => res.json())
-        .then(data => console.log(data.res))
+        .then(data => console.log(data))
 })
+
+window.eliminar = (placa) => {
+    fetch(`http://localhost:3000/vehiculos/${placa}`, {
+        method: "DELETE"
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data.res);
+    })
+}
