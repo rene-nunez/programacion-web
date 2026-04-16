@@ -2,7 +2,7 @@
   "name": "api-vehiculos",
   "version": "1.0.0",
   "description": "API para gestionar almacén de vehículos",
-  "license": "unlicense",
+  "license": "Unlicense",
   "author": "anon",
   "type": "module",
   "main": "server.js",
